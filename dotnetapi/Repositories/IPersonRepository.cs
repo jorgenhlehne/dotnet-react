@@ -6,7 +6,7 @@ namespace dotnetapi.Repositories
 {
     public interface IPersonRepository
     {
-        void AddPerson(string name, string address, int number);
+        void AddPerson(Person person);
         Person GetPerson(Guid id);
         IEnumerable<Person> GetPersons();
     }

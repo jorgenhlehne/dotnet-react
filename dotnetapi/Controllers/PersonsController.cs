@@ -28,5 +28,21 @@ namespace dotnetapi.Controllers
         {
             return repository.GetPerson(id);
         }
+
+        [HttpPost]
+        public ActionResult<Person> AddPerson(string name, string address, int number)
+        {
+            Person newPerson = new Person
+            {
+                Id = Guid.NewGuid(),
+                Name = name,
+                Address = address,
+                Number = number
+            };
+
+            repository.AddPerson(newPerson);
+
+            return newPerson;
+        }
     }
 }
