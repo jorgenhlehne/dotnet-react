@@ -27,6 +27,7 @@ namespace dotnetapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Singleton instance of the repository which holds all the data
             services.AddSingleton<IPersonRepository, PersonRepository>();
 
             services.AddControllers();

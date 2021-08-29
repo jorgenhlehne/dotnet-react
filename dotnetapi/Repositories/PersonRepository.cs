@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using dotnetapi.Models;
 
+// In-memory repository which stores the data.
+
 namespace dotnetapi.Repositories
 {
     public class PersonRepository : IPersonRepository
