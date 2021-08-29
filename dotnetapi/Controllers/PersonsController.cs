@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using dotnetapi.Models;
 using dotnetapi.Repositories;
+using dotnetapi.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dotnetapi.Controllers
@@ -30,14 +31,14 @@ namespace dotnetapi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Person> AddPerson(string name, string address, int number)
+        public ActionResult<Person> AddPerson(CreatePersonDto createPersonDto)
         {
             Person newPerson = new Person
             {
                 Id = Guid.NewGuid(),
-                Name = name,
-                Address = address,
-                Number = number
+                Name = createPersonDto.Name,
+                Address = createPersonDto.Address,
+                Number = createPersonDto.Number
             };
 
             repository.AddPerson(newPerson);

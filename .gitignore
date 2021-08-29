@@ -80,7 +80,7 @@ _[Ss]cripts
 # REACT
 
 # dependencies
-/node_modules
+node_modules/
 /.pnp
 .pnp.js
 
