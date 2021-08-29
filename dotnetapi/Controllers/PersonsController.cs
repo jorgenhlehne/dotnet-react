@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using dotnetapi.Models;
 using dotnetapi.Repositories;
@@ -9,17 +10,23 @@ namespace dotnetapi.Controllers
     [Route("api/persons")]
     public class PersonsController : ControllerBase
     {
-        private PersonRepository repository;
+        private IPersonRepository repository;
 
-        public PersonsController()
+        public PersonsController(IPersonRepository repository)
         {
-            repository = new();
+            this.repository = repository;
         }
 
         [HttpGet]
         public IEnumerable<Person> GetPersons()
         {
             return repository.GetPersons();
+        }
+
+        [HttpGet("{id}")]
+        public Person GetPerson(Guid id)
+        {
+            return repository.GetPerson(id);
         }
     }
 }

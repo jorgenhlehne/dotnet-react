@@ -5,10 +5,13 @@ using dotnetapi.Models;
 
 namespace dotnetapi.Repositories
 {
-    public class PersonRepository
+    public class PersonRepository : IPersonRepository
     {
-        private List<Person> persons = new();
-    
+        private List<Person> persons = new()
+        {
+            new Person { Id = Guid.NewGuid(), Name = "Alice", Address = "Drammensveien 2", Number = 55577555 }
+        };
+
         public IEnumerable<Person> GetPersons()
         {
             return persons;
@@ -21,12 +24,13 @@ namespace dotnetapi.Repositories
 
         public void AddPerson(string name, string address, int number)
         {
-            Person newPerson = new Person{ 
-                                        Id = Guid.NewGuid(),
-                                        Name = name,
-                                        Address = address,
-                                        Number = number
-                                    };
+            Person newPerson = new Person
+            {
+                Id = Guid.NewGuid(),
+                Name = name,
+                Address = address,
+                Number = number
+            };
 
             persons.Add(newPerson);
         }
