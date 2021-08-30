@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using dotnetapi.Models;
 
-// In-memory repository which stores the data.
+// In-memory repository which stores data. No longer in use, as
+// an SQLite db has been implemented.
 
 namespace dotnetapi.Repositories
 {

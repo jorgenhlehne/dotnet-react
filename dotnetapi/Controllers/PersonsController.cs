@@ -19,21 +19,22 @@ namespace dotnetapi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Person> GetPersons()
+        public IEnumerable<PersonDto> GetPersons()
         {
-            return repository.GetPersons();
+            return dotnetapi.Daos.PersonDaos.GetPersons();
         }
 
-        [HttpGet("{id}")]
+        // Commented out, not currently needed.
+        /* [HttpGet("{id}")]
         public Person GetPerson(Guid id)
         {
             return repository.GetPerson(id);
-        }
+        } */
 
         [HttpPost]
-        public ActionResult<Person> AddPerson(CreatePersonDto createPersonDto)
+        public ActionResult<PersonDto> AddPerson(CreatePersonDto createPersonDto)
         {
-            Person newPerson = new Person
+            Person newPerson = new()
             {
                 Id = Guid.NewGuid(),
                 Name = createPersonDto.Name,
@@ -41,9 +42,22 @@ namespace dotnetapi.Controllers
                 Number = createPersonDto.Number
             };
 
-            repository.AddPerson(newPerson);
+            // Code duplication. Ok this once, but if project grows bigger
+            // then dedicated methods for converting between objects and DTOs
+            // should be implemented.
+            PersonDto newPersonDto = new()
+            {
+                Id = Guid.NewGuid(),
+                Name = createPersonDto.Name,
+                Address = createPersonDto.Address,
+                Number = createPersonDto.Number
+            };
 
-            return newPerson;
+            //repository.AddPerson(newPerson);
+
+            dotnetapi.Daos.PersonDaos.AddPerson(newPerson);
+
+            return newPersonDto;
         }
     }
 }
