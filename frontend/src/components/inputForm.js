@@ -22,11 +22,6 @@ function InputForm(props) {
         }).then(
             r => {
                 console.log(r.status)
-                if(r.ok){
-                    console.log("Success!")
-                } else {
-                    console.log("Something failed.")
-                }
             }
         )
     }

@@ -19,7 +19,7 @@ function DataDisplay(props) {
             </button>
             <ul>
                 {data.map((entry, i) => {
-                    console.log(entry)
+                    //console.log(entry)
                     return(
                         <li key={i}>{entry.name}, {entry.address}, {entry.number}</li>
                     )

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -30,6 +31,8 @@ namespace dotnetapi
             // Singleton instance of the repository which holds all the data
             services.AddSingleton<IPersonRepository, PersonRepository>();
 
+            services.AddCors();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -50,6 +53,11 @@ namespace dotnetapi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(
+                options => options.WithOrigins("https://dotnet-api-react-frontend.azurewebsites.net").AllowAnyHeader().AllowAnyMethod()
+            );
+
 
             app.UseAuthorization();
 

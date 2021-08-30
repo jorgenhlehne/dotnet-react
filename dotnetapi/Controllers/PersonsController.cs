@@ -4,6 +4,7 @@ using dotnetapi.Models;
 using dotnetapi.Repositories;
 using dotnetapi.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace dotnetapi.Controllers
 {

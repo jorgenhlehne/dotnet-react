@@ -27,6 +27,7 @@ _UpgradeReport_Files/
 bin/
 obj/
 TestResults/
+publish/
 ###################
 # Web publish log #
 ###################
@@ -89,7 +90,7 @@ node_modules/
 /coverage
 
 # production
-/build
+build/
 
 # misc
 .DS_Store
